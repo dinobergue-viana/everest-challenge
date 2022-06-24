@@ -1,11 +1,11 @@
 <template>
   <header>
     <div id="btnNav">
-      <input type="button" value="Cadastro" class="btnNav">
-      <input type="button" value="Listagem" class="btnNav">
+      <input type="button" value="Cadastro" class="btnNav click">
+      <input type="button" value="Listagem" class="btnNav click">
     </div>
     <div id="btnCadastro">
-      <input type="button" value="Cadastrar novo usuário" class="btnCadastro">
+      <input type="button" value="Cadastrar novo usuário" class="btnCadastro click">
     </div>
   </header>
 </template>

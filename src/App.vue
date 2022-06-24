@@ -33,4 +33,8 @@ export default {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
+.click {
+  cursor: pointer;
+}
 </style>

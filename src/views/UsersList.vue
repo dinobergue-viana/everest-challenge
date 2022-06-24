@@ -12,7 +12,7 @@
         <p class="Nome margin">Lucas Gabriel Devigili</p>
       </div>
       <div id="hidden">
-        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye click"></i>
       </div>
     </div>
   </div>

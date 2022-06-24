@@ -1,7 +1,7 @@
 <template>
   <div class="nav-container">
     <div id="arrow">
-      <i class="fa-solid fa-arrow-left"></i>
+      <i class="fa-solid fa-arrow-left click"></i>
     </div>
     <div id="title">
       <p>CADASTRO DE USUÁRIOS</p>
