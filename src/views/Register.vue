@@ -1,12 +1,13 @@
 <template>
-  <div class="form-container">
+  <div>
     <!-- TODO -->
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'Register',
+  name: 'UsersList'
 }
 </script>
 

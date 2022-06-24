@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <!-- aqui deve ir o Header -->
-    <!-- aqui deve ir a navbar -->
+    <Header />
+    <Navbar />
     <div class="view-container">
       <router-view/>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="js">
 import Header from "./components/Header.vue"
 import Navbar from "./components/Navbar.vue"
 
@@ -27,7 +27,6 @@ export default {
 </script>
 
 <style>
-/* SINTA-SE A VONTADE PARA ALTERAR ESSAS ESTILIZAÇÕES BASICAS */
 * {
   margin: 0;
   padding: 0;
