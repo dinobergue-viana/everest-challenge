@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <!-- aqui deve ir o Header -->
-    <!-- aqui deve ir a navbar -->
+   <h1>Teste</h1>
     <div class="view-container">
       <router-view/>
     </div>
