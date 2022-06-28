@@ -34,7 +34,6 @@ export default {
 }
 
 .container {
-  /* background-color: aqua; */
   height: 57ch;
   width: 60vw;
   border-bottom: 1px solid rgb(189, 189, 189);
@@ -47,7 +46,6 @@ export default {
 }
 
 #header {
-  /* background-color: bisque; */
   font-weight: 700;
   grid-area: header;
   border-top: 1px solid rgb(189, 189, 189);
@@ -58,14 +56,12 @@ export default {
 }
 
 #cpf {
-  /* background-color: blueviolet; */
   grid-area: cpf;
   display: flex;
   align-items: center;
 }
 
 #nome {
-  /* background-color: chartreuse; */
   grid-area: nome;
   display: flex;
   align-items: center;
@@ -76,7 +72,6 @@ export default {
 }
 
 #hidden {
-  /* background-color: brown; */
   grid-area: hiden;
   display: flex;
   align-items: center;

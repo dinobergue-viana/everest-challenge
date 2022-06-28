@@ -7,8 +7,8 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'UsersList'
+  name: 'Register'
 }
 </script>
 
-<style scoped></style>
+<style scoped></style>  
