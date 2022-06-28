@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-   <h1>Teste</h1>
     <div class="view-container">
       <router-view/>
     </div>
@@ -9,7 +8,7 @@
 
 <script>
 import Header from "./components/Header.vue"
-import Navbar from "./components/Navbar.vue"
+import Navbar from "./components/NavList.vue"
 
 export default {
   name: 'App',
