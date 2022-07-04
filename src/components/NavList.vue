@@ -2,7 +2,7 @@
     <header>
         <div class="navbar">
             <div class="nav-container">
-                <router-link to="/"> <i class="fa fa-arrow-left" id="custom" aria-hidden="true"></i></router-link>
+                 <i class="fa fa-arrow-left" id="custom" aria-hidden="true"></i>
                 <h3 class="text">Cadastro de Usuario</h3>
             </div>
         </div>

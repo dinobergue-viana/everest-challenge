@@ -18,31 +18,33 @@
       <br>
       <br>
       <hr>
-      <br>
-      <a id="cpf">CPF</a>
+     <a id="cpf">CPF</a>
       <a id="FullName">Nome Completo</a>
+      <br>  
       <br>
       <br>
       <hr>
     </div>
     <div>
+      <br>
       <UsersList />
-      <div v-show="Crate">
-
-      </div>>
+      <br>
+      <br>
+      <hr>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
 import NavList from "../components/NavList.vue"
 import UsersList from '../components/UsersList.vue'
-export default {
+import axios from 'axios'
+export default {  
   components: {
     NavList,
     UsersList,
-  
-  },
+
+},
 
 };
 </script>
@@ -84,15 +86,15 @@ export default {
   font-size: 26px;
   color: #060606;
   border-radius: 14px;
-  border-style: none;
+  border: solid 2px rgb(255, 35, 123);
   background-color: rgb(255, 35, 123);
   text-align: center;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #f5e6e6;
-  color: rgb(0, 0, 0);
+  background-color: white;
+  border: solid 2px rgb(255, 35, 123);
 }
 
 hr {
@@ -105,7 +107,7 @@ hr {
 }
 
 #FullName {
-  margin-left: 18%;
+  margin-left: 15%;
 }
 
 .user {
