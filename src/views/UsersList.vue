@@ -81,6 +81,7 @@ export default {
 
 ::v-deep .active{
   color: black!important;
+  font-weight: 700;
 
 }
 
