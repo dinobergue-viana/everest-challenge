@@ -6,10 +6,12 @@
         <p class="headerNome margin">NOME COMPLETO</p>
       </div>
       <div id="cpf">
-        <p class="Cpf margin">104.339.039.10</p>
+        <p id="UserCpf" class="Cpf margin" v-for="i in users" :key="i.id ">{{i.cpf}}</p>
       </div>
       <div id="nome">
-        <p class="Nome margin">Lucas Gabriel Devigili</p>
+        <p id="UserName" class="Nome margin" v-for="i in users" :key="i.id">
+          <br />{{ i.fullname }} <br />
+        </p>
       </div>
       <div id="hidden">
         <i class="fa-solid fa-eye click"></i>
@@ -22,6 +24,19 @@
 import axios from "axios";
 export default {
   name: "UsersList",
+  data() {
+    return {
+      users: [{}],
+    };
+  },
+  created() {
+    this.users = axios
+      .get("/api/users/")
+      .then((res) => (this.users = res.data))
+      .then((json) => {
+        this.users = json.users;
+      });
+  },
 };
 </script>
 
