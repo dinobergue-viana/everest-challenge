@@ -1,19 +1,42 @@
 <template>
   <header>
     <div id="btnNav">
-      <input type="button" value="Cadastro" class="btnNav click">
-      <input type="button" value="Listagem" class="btnNav click">
+      <div id="rawBtn">
+        <section id="rawBtnNav">
+          <input
+            type="button"
+            value="Cadastro"
+            class="rawBtnNav disabled"
+            disabled
+          />
+        </section>
+
+        <section id="rawBtnNav">
+          <input type="button" value="Listagem" class="rawBtnNav click" />
+        </section>
+      </div>
     </div>
     <div id="btnCadastro">
-      <input type="button" value="Cadastrar novo usuário" class="btnCadastro click">
+      <input
+        type="button"
+        value="Cadastrar novo usuário"
+        class="btnCadastro click"
+      />
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'NavBar'
-}
+  name: "NavBar",
+
+  data() {
+    return {
+      cadastro: "",
+      listagem: "",
+    };
+  },
+};
 </script>
 
 <style scoped>
@@ -25,12 +48,24 @@ header {
   align-items: center;
 }
 
+#rawBtn {
+  display: flex;
+}
+
+.rawBtnNav {
+  height: 74px;
+  width: 140px;
+  font-size: 17px;
+  background-color: transparent;
+  border: transparent;
+}
+
 .btnNav {
- height: 74px;
- width: 140px;
- font-size: 17px;
- background-color: transparent;
- border: transparent;
+  height: 74px;
+  width: 140px;
+  font-size: 17px;
+  background-color: pink;
+  border: transparent;
 }
 
 #btnCadastro {
@@ -40,13 +75,13 @@ header {
 }
 
 .btnCadastro {
-    height: 60px;
-    width: 220px;
-    font-size: 16px;
-    color: white;
-    background-color: rgb(224, 43, 87);
-    border: transparent;
-    border-radius: 10px;
+  height: 60px;
+  width: 220px;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(224, 43, 87);
+  border: transparent;
+  border-radius: 10px;
 }
 
 .btnCadastro:hover {

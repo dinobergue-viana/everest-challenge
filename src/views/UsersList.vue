@@ -5,47 +5,84 @@
         <p class="headerCpf margin">CPF</p>
         <p class="headerNome margin">NOME COMPLETO</p>
       </div>
-      <div id="cpf">
-        <p id="UserCpf" class="Cpf margin" v-for="i in users" :key="i.id ">{{i.cpf}}</p>
-      </div>
-      <div id="nome">
-        <p id="UserName" class="Nome margin" v-for="i in users" :key="i.id">
-          <br />{{ i.fullname }} <br />
-        </p>
-      </div>
-      <div id="hidden">
-        <i class="fa-solid fa-eye click"></i>
+      <div id="paginacao">
+        <div id="lista">
+          <ul v-for="user in currentItens" :key="user.message">
+            <div id="cpf">
+              <li class="cpf margin" v-mask="'###.###.###-##'">
+                {{ user.cpf }}
+              </li>
+            </div>
+            <div id="nome">
+              <li class="name margin">{{ user.fullname }}</li>
+            </div>
+            <div id="hidden">
+              <li class="hidden"><i class="fa-solid fa-eye click"></i></li>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
+
+    <jw-pagination
+      :labels="customLabels"
+      :pageSize="10"
+      :maxPages="4"
+      :items="dataUsers"
+      @changePage="onChangePage"
+    ></jw-pagination>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
+const customLabels = {
+  first: "",
+  last: "",
+  previous: "<",
+  next: ">",
+};
+
 export default {
   name: "UsersList",
   data() {
     return {
-      users: [{}],
+      url: "http://localhost:8080/api/users",
+      dataUsers: [],
+      currentItens: [],
+      customLabels,
     };
   },
-  created() {
-    this.users = axios
-      .get("/api/users/")
-      .then((res) => (this.users = res.data))
-      .then((json) => {
-        this.users = json.users;
-      });
+  methods: {
+    onChangePage(currentItens) {
+      this.currentItens = currentItens;
+    },
+  },
+  async mounted() {
+    const response = await axios.get(this.url);
+    this.dataUsers = response.data.users;
   },
 };
 </script>
 
 <style scoped>
 #userList {
-  height: 60ch;
+  height: 65ch;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+}
+
+::v-deep .page-number {
+  color: gray!important;
+}
+
+::v-deep .active{
+  color: black!important;
+  font-weight: 700;
+
 }
 
 .container {
@@ -54,10 +91,8 @@ export default {
   border-bottom: 1px solid rgb(189, 189, 189);
   display: grid;
   grid-template-columns: 30fr 70fr 10fr;
-  grid-template-rows: 5vh 5vh;
-  grid-template-areas:
-    "header header header"
-    "cpf nome hiden";
+  grid-template-rows: 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh 5vh;
+  grid-template-areas: "header header header";
 }
 
 #header {
@@ -72,24 +107,46 @@ export default {
 
 #cpf {
   grid-area: cpf;
-  display: flex;
-  align-items: center;
 }
 
 #nome {
   grid-area: nome;
-  display: flex;
-  align-items: center;
-}
-
-.margin {
-  margin-left: 20px;
 }
 
 #hidden {
   grid-area: hiden;
+}
+
+#paginacao {
+  height: 450px;
+  width: 60vw;
+}
+
+#lista {
+  width: 60vw;
+}
+
+ul {
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  display: grid;
+  grid-template-columns: 30fr 70fr 10fr;
+  grid-template-rows: 3vh;
+  grid-template-areas:
+    "header header header"
+    "cpf nome hiden";
+}
+ul li {
+  font-size: 13px;
+  list-style-type: none;
+}
+
+.cpf {
+  width: 260px;
+}
+
+.margin {
+  margin-left: 20px;
 }
 </style>
