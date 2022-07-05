@@ -37,4 +37,9 @@ export default {
 .click {
   cursor: pointer;
 }
+
+.disabled {
+  cursor: no-drop;
+}
+
 </style>
