@@ -22,30 +22,30 @@
       <a id="FullName">Nome Completo</a>
       <br>  
       <br>
-      <br>
       <hr>
     </div>
     <div>
       <br>
-      <UsersList />
+      <div id="pagination">
+      <Pagination/>
       <br>
       <br>
-      <hr>
+      </div>
       </div>
     </div>
+    
 </template>
 
 <script>
 import NavList from "../components/NavList.vue"
-import UsersList from '../components/UsersList.vue'
 import axios from 'axios'
+import Pagination from '../components/Pagination.vue'
 export default {  
   components: {
     NavList,
-    UsersList,
-
-},
-
+    Pagination
+   },
+  
 };
 </script>
 
@@ -57,12 +57,10 @@ export default {
   border-bottom: 3px solid rgb(22, 21, 21);
   cursor: pointer;
 }
-
 .Cadastro:hover {
   color: rgb(140, 130, 130);
   border-bottom: 3px solid rgb(140, 130, 130);
 }
-
 .Listagem {
   color: #000000;
   font-size: 19px;
@@ -70,12 +68,10 @@ export default {
   border-bottom: 3px solid rgb(22, 21, 21);
   cursor: pointer;
 }
-
 .Listagem:hover {
   color: rgb(140, 130, 130);
   border-bottom: 3px solid rgb(140, 130, 130);
 }
-
 .btn {
   text-align: center;
   margin-left: 57%;
@@ -91,26 +87,24 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-
 .btn:hover {
   background-color: white;
   border: solid 2px rgb(255, 35, 123);
 }
-
 hr {
   margin-left: 13%;
   margin-right: 18%;
 }
-
 #cpf {
   margin-left: 19%;
 }
 
 #FullName {
-  margin-left: 15%;
+  margin-left: 17%;
 }
 
 .user {
   display: inline;
 }
+
 </style>
