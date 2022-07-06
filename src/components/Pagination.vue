@@ -1,21 +1,20 @@
 <template>
     <div>
         <div class="card text-center m-3">
-
-
-
             <div id="usuarios">
                 <div>
-                    <p id="UserCpf" v-for="item in pageOfItems" v-mask="'###.###.###-##'" :key="item.id">{{ item.cpf | VMask(mask)
- }} <br></p>
+                    <p id="UserCpf" v-for="item in pageOfItems" v-mask="'###.###.###-##'" :key="item.id">{{ item.cpf |
+                            VMask(mask)}} 
+                    </p>
                 </div>
                 <div id="nome">
                     <br>
                     <br>
-                    <p id="UserName" v-for="item in pageOfItems"  :key="item.id">{{ item.fullname }} <br>  <i class="fa fa-eye" id="icon" aria-hidden="true"></i> </p>
+                    <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i
+                            class="fa fa-eye" id="icon" aria-hidden="true"></i> </p>
                 </div>
             </div>
-                 
+
             <br>
             <br>
             <hr>
