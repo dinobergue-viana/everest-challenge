@@ -6,7 +6,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import JwPagination from 'jw-vue-pagination';
 
 import VueMask from 'v-mask';
-Vue.use(VueMask)  
+Vue.use(VueMask)    
 
 Vue.component('jw-pagination', JwPagination);
 
