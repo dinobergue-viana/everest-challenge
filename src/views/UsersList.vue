@@ -9,8 +9,8 @@
         <div id="lista">
           <ul v-for="user in currentItens" :key="user.message">
             <div id="cpf">
-              <li class="cpf margin" v-mask="'###.###.###-##'">
-                {{ user.cpf }}
+              <li class="cpf margin">
+                {{ user.cpf | VMask(mask) }}
               </li>
             </div>
             <div id="nome">
@@ -52,6 +52,7 @@ export default {
       dataUsers: [],
       currentItens: [],
       customLabels,
+      mask: "###.###.###-##" 
     };
   },
   methods: {
