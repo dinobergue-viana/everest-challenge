@@ -15,11 +15,14 @@
     <ul>
       <h3>Nome Completo</h3>
       <div class="itens_box">
-        <li class="list" v-for="user in pageOfItems" :key="user.id">
+        <li class="namesList" v-for="user in pageOfItems" :key="user.id">
           {{user.fullname}}
+          <f-icon icon="fa-solid fa-eye"  class="eye"/>
         </li>
       </div>
+       
     </ul>
+    
   </div>
   <div class="pagBox">
     <jw-pagination :pageSize="limit" :labels="MenuLabels"  :items="Users" @changePage="onChangePage"></jw-pagination>
@@ -104,6 +107,11 @@ export default {
     display:grid;
     grid-template-columns: 40% 60%;
     
+  }
+  .namesList{
+    display:flex;
+    justify-content: space-between;
+
   }
 
   .itens_box{
