@@ -1,6 +1,6 @@
 <template>
 <div class="content">
-  <ListSwich @changeCad="change" @changeList="change" />
+  <UserSwich class="ListSwich" @changeCad="change" @changeList="change" />
   <UserCad v-show="swich==false"/>
   <Pagination v-show="swich==true"/>
 </div>
@@ -9,13 +9,13 @@
 <script>
 
 import Pagination from "@/components/List/Pagination.vue"
-import ListSwich from "../components/List/UsersList.vue"
+import UserSwich from "../components/List/UserSwich.vue"
 import UserCad from "@/components/List/UserCad.vue"
   export default {
     
     name: "app",
     components:{
-      ListSwich,
+      UserSwich,
       Pagination,
       UserCad
     },
@@ -37,7 +37,18 @@ import UserCad from "@/components/List/UserCad.vue"
 </script>
 
 <style scoped>
-  h3{
+.content{
+    padding-left: 2em;
+    margin-left: 27%;
+    width: 45.2vw;
+    align-content: center;
+
+  }
+
+  .ListSwich{
+    margin-bottom: 1vw
+  }
+  /* h3{
     border-top: solid 1px rgb(223, 219, 219);
     border-bottom: solid 1px rgb(223, 219, 219);
     margin-bottom:3vw;
@@ -113,6 +124,6 @@ import UserCad from "@/components/List/UserCad.vue"
     width: 30em;
     font-size: 20px;
 
-  }
+  } */
 
 </style>
