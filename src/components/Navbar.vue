@@ -1,8 +1,5 @@
 <template>
      <div id="navbar">
-        <!-- <VoltarIcon v-on:click.native="back" id="icon"/> 
-
-        <f-icon id="arrow" icon="fa-solid fa-arrow-left-long" />-->
         <p id="title">CADASTRO DE USUÁRIO</p>
     </div>
 </template>
