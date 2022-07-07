@@ -94,6 +94,7 @@ export default {
     .off{
         color: rgb(65, 64, 64);
         border-bottom: solid 1px rgb(223, 219, 219);
+        padding-bottom: 0. ;
         font-weight: 70;
         z-index: 1;
     }
