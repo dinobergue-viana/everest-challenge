@@ -12,6 +12,7 @@
       <br>
       <br>
       <br>
+      <br>
       <button class="btn">Cadastrar Novo Usuario</button>
     </div>
     <div class="user">
@@ -53,8 +54,9 @@ export default {
 .Cadastro {
   color: #000000;
   font-size: 19px;
-  margin-left: 50%;
+  margin-left: 43%;
   border-bottom: 3px solid rgb(22, 21, 21);
+  transition-duration: 0.8s;
   cursor: pointer;
 }
 
@@ -68,6 +70,7 @@ export default {
   font-size: 19px;
   margin-left: 5%;
   border-bottom: 3px solid rgb(22, 21, 21);
+  transition-duration: 0.8s;
   cursor: pointer;
 }
 
@@ -77,24 +80,24 @@ export default {
 }
 
 .btn {
-  text-align: center;
-  margin-left: 57%;
-  height: 56px;
-  padding: 15px 32px;
-  text-align: center;
-  display: inline-block;
-  font-size: 26px;
-  color: #060606;
-  border-radius: 14px;
   border: solid 2px rgb(255, 35, 123);
-  background-color: rgb(255, 35, 123);
+  background-color: white;
+  color: rgb(0, 0, 0);
+  padding: 16px 32px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 11px;
+  margin-left: 60%;
 }
 
 .btn:hover {
-  background-color: white;
-  border: solid 2px rgb(255, 35, 123);
+  background-color: rgb(255, 35, 123);
+  color: white;
 }
 
 hr {
@@ -107,7 +110,7 @@ hr {
 }
 
 #FullName {
-  margin-left: 17%;
+  margin-left: 294px;
 }
 
 .user {

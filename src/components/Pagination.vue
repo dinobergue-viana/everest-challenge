@@ -11,8 +11,8 @@
                 <div id="nome">
                     <br>
                     <br>
-                    <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i
-                            class="fa fa-eye" id="icon" aria-hidden="true"></i> </p>
+                    <p id="UserName" v-for="item in pageOfItems" :key="item.id"> <br> {{ item.fullname }}  <i class="fa fa-eye"
+                            id="icon" aria-hidden="true"></i> </p>
                 </div>
             </div>
             <br>
@@ -21,8 +21,8 @@
             <br>
         </div>
         <div class="card-footer pb-0 pt-3">
-            <jw-pagination :disableDefaultStyles="true" :labels="customLabels" :items="users"
-                @changePage="onChangePage"></jw-pagination>
+            <jw-pagination :disableDefaultStyles="true" :pageSize="6" :labels="customLabels"
+                :items="users" @changePage="onChangePage"></jw-pagination>
         </div>
     </div>
 </template>
@@ -78,7 +78,7 @@ export default {
 
 #UserName {
     margin-left: -258%;
-    margin-top: 15%;
+    margin-top: 18%;
     padding-left: 108%;
     display: block;
     height: 47px;
@@ -112,5 +112,9 @@ hr {
 
 #icon {
     margin-left: 308%;
+}
+
+.card text-center m-3 {
+    display: inline-block;
 }
 </style>
