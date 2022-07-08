@@ -106,10 +106,6 @@ hr {
     font-size: 22px;
 }
 
-.pagination:hover {
-    transform: scale(1.1);
-}
-
 #icon {
     margin-left: 308%;
 }

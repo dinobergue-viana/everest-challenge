@@ -12,13 +12,14 @@
                     <div id="border">
                         <h2 id="title">Dados de Contato</h2>
                         <br>
-                        <div> 
+                        <div>
                             <br>
                             <p id="nome">Nome: </p>
                             <br />
                             <p id="email">Email:</p>
                             <br>
                             <p id="cpf">CPF:</p>
+                            <p id="UserCpf" v-for="item in pageOfItems" :key="item.id">{{ item.cpf | VMask(mask)}}</p>
                             <br>
                             <p id="telefone">Telefone:</p>
                             <br>
@@ -26,8 +27,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                               <button v-on:click="close" type="button" class="btn-danger" data-dismiss="modal">Cancelar</button>
-                    <router-link to="/TelaFinal"> <button class="btn">Continuar</button></router-link>
+                    <button v-on:click="close" type="button" class="btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button class="btn">Continuar</button>
                 </div>
             </div>
         </div>
@@ -35,29 +36,38 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  data() {
+    data() {
         return {
-         modal: true
+            modal: true,
+            users: [{}],
         };
     },
-    methods: {
-     close: function () {
-      if (this.modal == true){
-         this.modal = false
-      }
+    created() {
+        this.users = axios.get("/api/users/")
+            .then((res) => this.users = res.data)
+            .then((json) => {
+                this.users = json.users
+
+            })
     },
+    methods: {
+        close: function () {
+            if (this.modal) {
+                this.modal = false
+            }
+        },
     },
 }
 </script>
 
 <style scoped>
-
 #title {
-  margin-top: 12px;
-  margin-left: 37px;
-  border-bottom: solid 2px grey;
-  margin-right: 55px;
+    margin-top: 12px;
+    margin-left: 37px;
+    border-bottom: solid 2px grey;
+    margin-right: 55px;
 }
 
 .modal {
@@ -127,24 +137,28 @@ export default {
     margin-left: 10px;
     background-color: black;
 }
-#nome{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+
+#nome {
+    margin-left: 9%;
+    margin-top: 4%;
+    font-size: 19px;
 }
-#email{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+
+#email {
+    margin-left: 9%;
+    margin-top: 4%;
+    font-size: 19px;
 }
-#cpf{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+
+#cpf {
+    margin-left: 9%;
+    margin-top: 4%;
+    font-size: 19px;
 }
-#telefone{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+
+#telefone {
+    margin-left: 9%;
+    margin-top: 4%;
+    font-size: 19px;
 }
 </style>

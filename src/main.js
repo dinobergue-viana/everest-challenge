@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import  axios  from 'axios'
 import router from './router'
 import { createServer, Model } from 'miragejs'
 import '@fortawesome/fontawesome-free/css/all.css'

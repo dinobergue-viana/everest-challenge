@@ -31,7 +31,7 @@
         <Pagination />
         <br>
         <br>
-        <ModalEye/>
+        <ModalEye />
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
   font-size: 19px;
   margin-left: 43%;
   border-bottom: 3px solid rgb(22, 21, 21);
-  transition-duration: 0.8s;
+  transition-duration: 0.3s;
   cursor: pointer;
 }
 
@@ -69,17 +69,10 @@ export default {
 }
 
 .Listagem {
-  color: #000000;
-  font-size: 19px;
-  margin-left: 5%;
-  border-bottom: 3px solid rgb(22, 21, 21);
-  transition-duration: 0.8s;
-  cursor: pointer;
-}
-
-.Listagem:hover {
   color: rgb(140, 130, 130);
   border-bottom: 3px solid rgb(140, 130, 130);
+  font-size: 19px;
+  margin-left: 5%;
 }
 
 .btn {
