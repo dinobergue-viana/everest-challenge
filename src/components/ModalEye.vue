@@ -15,8 +15,7 @@
                         <div>
                             <br>
                             <p id="nome">Nome: </p>
-               
-                            <br />
+                           <br />
                             <p id="email">Email:</p>
                             <br>
                             <p id="cpf">CPF:</p>
@@ -54,6 +53,11 @@ export default {
             })
     },
     methods: {
+
+          onChangePage(users) {
+            this.pageOfItems = users;
+            console.log(users);
+        },
         close: function () {
             if (this.modal) {
                 this.modal = false
