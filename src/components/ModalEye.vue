@@ -15,11 +15,12 @@
                         <div>
                             <br>
                             <p id="nome">Nome: </p>
+               
                             <br />
                             <p id="email">Email:</p>
                             <br>
                             <p id="cpf">CPF:</p>
-                            <p id="UserCpf" v-for="item in pageOfItems" :key="item.id">{{ item.cpf | VMask(mask)}}</p>
+                            <p id="UserCpf"></p>
                             <br>
                             <p id="telefone">Telefone:</p>
                             <br>

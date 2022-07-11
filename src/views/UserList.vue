@@ -28,10 +28,10 @@
     <div>
       <br>
       <div id="pagination">
-        <Pagination />
+        <Pagination @dados="TrasferenciaDeDados"/>
         <br>
         <br>
-        <ModalEye />
+        <ModalEye v-show="openModal" :data_dados="ArmazenamentoDeDados" />
       </div>
     </div>
   </div>
@@ -48,6 +48,18 @@ export default {
     NavList,
     Pagination,
     ModalEye
+  },
+  data() {
+    return {
+        openModal: false
+    }
+  }, 
+  methods: {
+     TrasferenciaDeDados(value){
+         this.ArmazenamentoDeDados = value
+       this.openModal = true
+       
+    }
   },
 
 };

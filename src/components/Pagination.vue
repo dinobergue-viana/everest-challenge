@@ -11,7 +11,7 @@
                 <div id="nome">
                     <br>
                     <br>
-                    <p id="UserName" v-for="item in pageOfItems" :key="item.id"> <br> {{ item.fullname }}  <i class="fa fa-eye"
+                    <p id="UserName" v-for="item in pageOfItems" :key="item.id"> <br> {{ item.fullname }}  <i v-on:click="open(item)"  class="fa fa-eye"
                             id="icon" aria-hidden="true"></i> </p>
                 </div>
             </div>
@@ -58,6 +58,9 @@ export default {
         onChangePage(users) {
             this.pageOfItems = users;
             console.log(users);
+        },
+        open(item){
+             this.$emit("dados")
         }
     }
 };
