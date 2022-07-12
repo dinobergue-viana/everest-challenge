@@ -42,7 +42,6 @@ import UserCad from "@/components/List/UserCad.vue"
     margin-left: 27%;
     width: 45.2vw;
     align-content: center;
-
   }
 
   .ListSwich{
@@ -50,7 +49,7 @@ import UserCad from "@/components/List/UserCad.vue"
   }
 
   *{
-    font-size: min(1vw);
+    font-size: min(24px,1vw);
   }
 
 </style>
