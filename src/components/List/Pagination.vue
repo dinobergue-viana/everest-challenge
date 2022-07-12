@@ -96,9 +96,7 @@ export default {
   h3{
     border-top: solid 1px rgb(223, 219, 219);
     border-bottom: solid 1px rgb(223, 219, 219);
-    padding: 1vw 0 1vw 2vw;
-    
-  
+    padding: 1vw 0 1vw 2vw; 
   }
 
   .list_box{
@@ -106,7 +104,11 @@ export default {
     padding: 0.5vw;
     display:grid;
     grid-template-columns: 40% 60%;
-    
+  }
+
+  .eye:hover{
+    color:rgb(255, 0, 76);
+    transform: translateZ(10px) scale(1.5);
   }
   .namesList{
     display:flex;
