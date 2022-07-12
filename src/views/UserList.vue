@@ -28,10 +28,9 @@
     <div>
       <br>
       <div id="pagination">
-        <Pagination @dados="TrasferenciaDeDados"/>
+        <Pagination />
         <br>
         <br>
-        <ModalEye v-show="openModal" :data_dados="ArmazenamentoDeDados" />
       </div>
     </div>
   </div>
@@ -42,24 +41,11 @@
 import NavList from "../components/NavList.vue"
 import axios from 'axios'
 import Pagination from '../components/Pagination.vue'
-import ModalEye from "@/components/ModalEye.vue";
 export default {
   components: {
     NavList,
     Pagination,
-    ModalEye
-  },
-  data() {
-    return {
-        openModal: false
-    }
-  }, 
-  methods: {
-     TrasferenciaDeDados(value){
-         this.ArmazenamentoDeDados = value
-       this.openModal = true
-       
-    }
+  
   },
 
 };

@@ -5,11 +5,11 @@ import router from './router'
 import { createServer, Model } from 'miragejs'
 import '@fortawesome/fontawesome-free/css/all.css'
 import JwPagination from 'jw-vue-pagination';
+Vue.component('jw-pagination', JwPagination);
 
 import VueMask from 'v-mask';
 Vue.use(VueMask)    
 
-Vue.component('jw-pagination', JwPagination);
 
 
 createServer({
