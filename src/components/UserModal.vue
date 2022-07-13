@@ -29,8 +29,17 @@
                 </div>
                 <div class="userItem">
                     <span>Contato</span>
-                    <li v-show="User.checkZap">Whatsapp</li>
-                    <li v-show="User.checkSMS">Email e SMS</li>
+                    <li v-show="User.checkZap">
+                        <f-icon icon="fa-brands fa-whatsapp" />
+                        Whatsapp
+                    </li>
+                    <li v-show="User.checkSMS">
+                        <f-icon icon="fa-solid fa-envelope" />
+                        Email e SMS
+                    </li>
+                    <li v-show="!User.checkZap && !User.checkSMS">
+                        Não abilitado
+                    </li>
                 </div>
                 <span>Email</span>
                 <li>{{User.email}}</li>
@@ -124,7 +133,7 @@ export default {
         border:solid 2px gray;
         border-style: dashed ;
         margin-left: 2.0vw;
-        padding: 2.5vw;
+        padding: 2vw;
         display:flex;
         justify-content: space-between;
     }
