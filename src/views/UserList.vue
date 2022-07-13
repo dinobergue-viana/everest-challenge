@@ -1,18 +1,10 @@
 <template>
   <div>
     <NavList />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div>
+
+    <div class="buttons">
       <a class="Cadastro">Cadastro</a>
       <a class="Listagem">Listagem</a>
-      <br>
-      <br>
-      <br>
-      <br>
       <button class="btn">Cadastrar Novo Usuario</button>
     </div>
     <div class="user">
@@ -25,32 +17,78 @@
       <br>
       <hr>
     </div>
-    <div>
+    <div class="card text-center m-3">
       <br>
-      <div id="pagination">
-        <Pagination />
-        <br>
-        <br>
+      <div id="usuarios">
+        <div>
+          <p id="UserCpf" v-for="item in pageOfItems" v-mask="'###.###.###-##'" :key="item.id">{{ item.cpf | VMask(mask)
+          }} <br></p>
+        </div>
+        <div id="nome">
+          <br>
+          <br>
+          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i v-on:click="ModalOpen()" class="fa fa-eye"
+              id="icon" aria-hidden="true"></i> </p>
+        </div>
       </div>
+      <ModalEye v-show="openModal" />
+      <br>
+      <br>
+      <hr>
+      <br>
     </div>
+    <div class="card-footer pb-0 pt-3">
+      <jw-pagination :disableDefaultStyles="true" value="Continuar" v-on:click="verificacao" :labels="customLabels"
+        :items="users" @changePage="onChangePage"></jw-pagination>
+    </div>
+    <br>
   </div>
-
 </template>
 
 <script>
-import NavList from "../components/NavList.vue"
 import axios from 'axios'
-import Pagination from '../components/Pagination.vue'
+import ModalEye from "@/components/ModalEye.vue";
+import NavList from "../components/NavList.vue"
+
+const customLabels = {
+  first: '<<',
+  last: '>>',
+  previous: '<',
+  next: '>'
+};
 export default {
   components: {
     NavList,
-    Pagination,
-  
-  },
+    ModalEye
 
+  },
+  data() {
+    return {
+      users: [{}],
+      pageOfItems: [],
+      customLabels,
+      mask: "###.###.###.-##",
+      openModal: false
+    };
+  },
+  created() {
+    this.users = axios.get("/api/users/")
+      .then((res) => this.users = res.data)
+      .then((json) => {
+        this.users = json.users
+      })
+  },
+  methods: {
+    onChangePage(users) {
+      this.pageOfItems = users;
+      console.log(users);
+    }
+  },
+  ModalOpen(){
+        openModal = true
+  },
 };
 </script>
-
 <style scoped>
 .Cadastro {
   color: #000000;
@@ -71,6 +109,9 @@ export default {
   border-bottom: 3px solid rgb(140, 130, 130);
   font-size: 19px;
   margin-left: 5%;
+}
+.buttons{
+  margin-top:7% ;
 }
 
 .btn {
@@ -110,4 +151,52 @@ hr {
 .user {
   display: inline;
 }
-</style>
+
+#usuarios {
+  display: inline-flex;
+  margin-top: -84px;
+  margin-left: 23%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#UserCpf {
+  margin-left: 17%;
+  margin-top: 35%;
+}
+
+#UserName {
+  margin-left: -258%;
+  margin-top: 15%;
+  padding-left: 108%;
+  display: block;
+  height: 47px;
+}
+
+#nome {
+  margin-left: 107%;
+  margin-top: -7%;
+  padding-left: 8%;
+}
+
+hr {
+  margin-left: 13%;
+  margin-right: 18%;
+}
+
+.pagination {
+  cursor: pointer;
+  position: static;
+  margin-left: 23vw;
+  list-style: none;
+  display: inline-flex;
+  width: 50vw;
+  justify-content: space-between;
+  font-size: 22px;
+}
+
+
+#icon {
+  margin-left: 308%;
+}
+</style>  
