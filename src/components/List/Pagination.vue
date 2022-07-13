@@ -85,7 +85,6 @@ export default {
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
     width:50vw;
-
   }
 
   @keyframes boxIn{
@@ -110,7 +109,7 @@ export default {
     padding: 0.5vw;
     display:grid;
     grid-template-columns: 40% 60%;
-    margin-top: min(20%, 50vw);
+    margin-top: min(15%, 50vw);
   }
   .namesList{
     display:flex;
@@ -129,7 +128,7 @@ export default {
   .pagBox{
     width: 42.2vw;
     text-align: center;
-    margin-top:3vw;
+    margin-top:1vw;
   }
 
   

@@ -24,7 +24,8 @@ export default {
     background-color: rgb(255, 26, 95);
     border: none;
     border-radius: 12px;
-    margin:2vw;
+    margin:3vw;
+
     color:white;
   }
 </style>
