@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style>
-/* SINTA-SE A VONTADE PARA ALTERAR ESSAS ESTILIZAÇÕES BASICAS */
+
 * {
   margin: 0;
   padding: 0;

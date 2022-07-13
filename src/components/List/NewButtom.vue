@@ -18,7 +18,8 @@ export default {
   .newUser{
     width:12em;
     height:3em;
-    font-size:1vw;
+    font-size: min(1vw);
+    position: absolute;
     float: right;
     background-color: rgb(255, 26, 95);
     border: none;

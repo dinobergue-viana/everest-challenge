@@ -5,7 +5,6 @@
         CADASTRO
     </span>
     <span @click="changeList" :class="list" >LISTAGEM</span>
-    
   </div>
 </template>
 
@@ -35,9 +34,7 @@ export default {
             this.moviment = 'users'
             this.$emit("changeList",this.default)
         }
-
     },
-
 }
 </script>
 
@@ -48,8 +45,9 @@ export default {
         justify-content: space-around;
         width: 22vw;
         height: 1vw;
-        margin-top: 10vw;
+        margin-top: 9vw;
         margin-left: 10.5vw;
+        position:absolute;
     }
 
     .swichBottom{
@@ -88,7 +86,6 @@ export default {
         height: 1vw;
         text-align: center;
         z-index: 1;
-
     }
 
     .off{
@@ -113,8 +110,4 @@ export default {
         from{ width: 0px;}
         to{ width: 372px;}
       }
-
-
-
-
 </style>

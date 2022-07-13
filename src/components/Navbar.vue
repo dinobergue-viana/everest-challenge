@@ -9,7 +9,7 @@
     width: 2vw;
     height: 2vw;
    }
-     #navbar {
+    #navbar {
     background-color: rgb(255, 26, 95);
     display: flex;
     justify-content: center;
