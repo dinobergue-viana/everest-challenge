@@ -6,7 +6,6 @@
       <h3>CPF</h3>
       <div class="itens_box">
         <li class="list" v-for="user in pageOfItems" :key="user.id">
-          
           {{user.cpf | VMask(mask)}}
         </li>
       </div>
@@ -20,9 +19,7 @@
           <f-icon icon="fa-solid fa-eye"  class="eye"/>
         </li>
       </div>
-       
     </ul>
-    
   </div>
   <div class="pagBox">
     <jw-pagination :pageSize="limit" :labels="MenuLabels"  :items="Users" @changePage="onChangePage"></jw-pagination>
@@ -31,7 +28,6 @@
 </template>
 
 <script>
-
 const MenuLabels = {
     first: '<<',
     last: '>>',
@@ -59,19 +55,23 @@ export default {
       NewButtom
     },
     created() {
-      axios.get("/api/users")
-        .then((res) => this.users = res.data)
-        .then((json) => {
-          this.Users = json.users
-          this.mask = '###.###.###-##'
-
-      })  
+      try{
+        this.getUser()
+      }
+      catch(error){
+        console.log(error)
+      }
     },
     methods: {
         onChangePage(User) {
             this.pageOfItems = User;
-            console.log(this.pageOfItems)
         },
+
+        async getUser(){
+          const response = await axios.get("/api/users")
+          this.Users = await response.data.users
+          this.mask = '###.###.###-##'
+        }
     }
 };
 </script>
