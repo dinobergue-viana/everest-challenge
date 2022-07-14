@@ -1,8 +1,8 @@
 <template>
 <div class="content">
   <UserSwich class="ListSwich" @changeCad="change" @changeList="change" />
-  <UserCad v-show="swich==false"/>
-  <Pagination v-show="swich==true"/>
+  <UserCad v-show="!swich"/>
+  <Pagination v-show="swich"/>
 </div>
 </template>
 
