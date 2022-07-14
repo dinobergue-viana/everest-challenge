@@ -1,38 +1,55 @@
 <template>
-    <div class="modal" id="myModal" v-show="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
+  <section class="information-modal">
+    <span v-on:click="close" class="close">X</span>
+    <nav class="navbar-modal">
+      <h4>Detalhes do usuário</h4>
+      <button class="btn-ic-close" @click="closeModal">
+        <font-awesome-icon icon="fa-solid fa-xmark" class="ic-close" />
+      </button>
+    </nav>
 
-
-                    <div id="#botoes">
-                        <button id="dados" class="active">Dados</button>
-                    </div>
-                    <br>
-                    <div id="border">
-                        <h2 id="title">Dados de Contato</h2>
-                        <br>
-                        <div> 
-                            <br>
-                            <p id="nome">Nome: </p>
-                            <br>
-                            <p id="email">Email:</p>
-                            <br>
-                            <p id="cpf">CPF:</p>
-                            <br>
-                            <p id="telefone">Telefone:</p>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                               <button v-on:click="close" type="button" class="btn-danger" data-dismiss="modal">Cancelar</button>
-                               <button class="btn">Continuar</button>
-                </div>
-            </div>
+    <div class="contain-all-information">
+      <div class="informations">
+        <div class="information-content">
+          <label>Cpf</label>
+          <span></span>
         </div>
+        <div class="information-content">
+          <label>Nome completo</label>
+          <span></span>
+        </div>
+        <div class="information-content">
+          <label>Nascimento</label>
+          <span></span>
+        </div>
+      </div>
+
+      <div class="informations">
+        <div class="information-content">
+          <label>Celular</label>
+          <span></span>
+        </div>
+        <div class="information-content">
+          <label>Contato</label>
+          <span>
+            <p>
+              <font-awesome-icon
+                icon="fa-brands fa-whatsapp"
+                class="ic-whatsapp"
+              />
+            </p>
+            <p>Whatsapp</p>
+          </span>
+        </div>
+        <div class="information-content">
+          <label>Email</label>
+          <span class="modal-email"></span>
+        </div>
+      </div>
     </div>
+  </section>
 </template>
+
 
 <script>
 export default {
@@ -52,89 +69,72 @@ export default {
 </script>
 
 <style scoped>
-#title {
-  margin-top: 12px;
-  margin-left: 37px;
-  border-bottom: solid 2px grey;
-  margin-right: 55px;
+.information-modal {
+  width: 450px;
+  height: auto;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  right: -50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 1px 1100px rgba(0, 0, 0, 0.239);
 }
-.modal {
-    background-color: rgba(0, 0, 0, .8);
-    position: fixed;
-    display: table-column-group;
-    top: 0px;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+.navbar-modal {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.modal-content {
-    margin: 0 auto;
-    margin-top: 1%;
-    max-width: 600px;
-    background-color: #eee;
-    padding: 43px 34px;
-    box-shadow: 0 0 2px #fff;
-    border-radius: 25px
+.contain-all-information {
+  margin: 20px;
+  margin-top: 10px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid rgba(211, 211, 211, 0.542);
+  border-style: dashed;
 }
-.modal-body {
-    padding: 64px;
-    height: 500px;
+.informations {
+  width: 45%;
 }
-.btn-danger {
-    font-size: 20px;
-    padding: 11px 55px;
-    border: 0px;
-    border-radius: 3px;
-    color: white;
-    background-color: rgb(12, 12, 12);
-    cursor: pointer;
-    margin-left: 38px;
-    margin-top: -7px;
+.information-content {
+  margin: 15px 0px;
+  display: flex;
+  flex-direction: column;
 }
-.btn-danger:hover {
-    background-color: rgb(117, 111, 111);
+.close {
+  position: absolute;
+  right: 20px;
+  border: none;
+  background-color: transparent;
 }
-.btn {
-    font-size: 20px;
-    padding: 11px 55px;
-    border: 0px;
-    border-radius: 3px;
-    color: white;
-    background-color: rgb(255, 20, 106);
-    cursor: pointer;
-    margin-left: 10px;
-    margin-top: 62px;
+.close:hover {
+  cursor: pointer;
+  transform: translateZ(0px) scale(1.2);
 }
-.btn:hover {
-    background-color: rgba(255, 20, 106, 0.616);
+.close {
+  width: 21px;
+  height: 21px;
+  color: rgb(75, 75, 75);
 }
-#dados {
-    font-size: 20px;
-    padding: 8px 39px;
-    border: solid 2px black;
-    border-radius: 23px;
-    color: white;
-    margin-left: 10px;
-    background-color: black;
+span {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
-#nome{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+label {
+  font-size: 14px;
 }
-#email{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+.ic-whatsapp {
+  width: 21px;
+  height: 21px;
+  margin-right: 5px;
 }
-#cpf{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
-}
-#telefone{
-        margin-left: 9%;
-        margin-top: 4%;
-        font-size: 19px;
+.modal-email {
+  font-size: 13px;
 }
 </style> 

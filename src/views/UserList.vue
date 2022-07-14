@@ -11,7 +11,7 @@
       <br>
       <hr>
       <a id="cpf">CPF</a>
-      <a id="FullName">Nome Completo</a>
+          <a id="FullName">Nome Completo</a>
       <hr>
     </div>
     <div class="card text-center m-3">
@@ -163,7 +163,7 @@ hr {
 }
 
 #UserName {
-  margin-left: -258%;
+  margin-left: -225%;
   margin-top: 15%;
   padding-left: 108%;
   display: block;
