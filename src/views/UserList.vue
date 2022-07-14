@@ -9,12 +9,9 @@
     </div>
     <div class="user">
       <br>
-      <br>
       <hr>
       <a id="cpf">CPF</a>
       <a id="FullName">Nome Completo</a>
-      <br>
-      <br>
       <hr>
     </div>
     <div class="card text-center m-3">
@@ -27,7 +24,7 @@
         <div id="nome">
           <br>
           <br>
-          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i v-on:click="ModalOpen()" class="fa fa-eye"
+          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i @click="ModalOpen" class="fa fa-eye"
               id="icon" aria-hidden="true"></i> </p>
         </div>
       </div>
@@ -35,10 +32,10 @@
       <br>
       <br>
       <hr>
-      <br>
+
     </div>
     <div class="card-footer pb-0 pt-3">
-      <jw-pagination :disableDefaultStyles="true" value="Continuar" v-on:click="verificacao" :labels="customLabels"
+      <jw-pagination :disableDefaultStyles="true" value="Continuar"  :labels="customLabels"
         :items="users" @changePage="onChangePage"></jw-pagination>
     </div>
     <br>
@@ -72,7 +69,7 @@ export default {
     };
   },
   created() {
-    this.users = axios.get("/api/users/")
+       axios.get("/api/users/")
       .then((res) => this.users = res.data)
       .then((json) => {
         this.users = json.users
@@ -82,10 +79,10 @@ export default {
     onChangePage(users) {
       this.pageOfItems = users;
       console.log(users);
-    }
+    },
+      ModalOpen(){
+    this.openModal = true  
   },
-  ModalOpen(){
-        openModal = true
   },
 };
 </script>
