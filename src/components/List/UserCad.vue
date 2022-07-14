@@ -1,5 +1,5 @@
 <template>
-   <div> formulário de cadastro</div>
+   <div> </div>
 </template>
 
 <script>
