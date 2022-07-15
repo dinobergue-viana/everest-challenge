@@ -43,9 +43,7 @@
   </section>
 </template>
 
-
 <script>
-
 export default {
   props: {
     User_Prop: {
@@ -64,14 +62,9 @@ export default {
         this.modal = false
       }
     },
-    log() {
-      console.log(this.User_Prop)
-    }
   },
 }
 </script>
-</script>
-
 <style scoped>
 .information-modal {
   width: 450px;

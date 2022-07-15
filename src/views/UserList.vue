@@ -72,10 +72,7 @@ export default {
   },
   created() {
     axios.get("/api/users/")
-      .then((res) => this.users = res.data)
-      .then((json) => {
-        this.users = json.users
-      })
+      .then((res) => this.users = res.data.users)
   },
   methods: {
     onChangePage(users) {
