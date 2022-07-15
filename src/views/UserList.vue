@@ -11,32 +11,32 @@
       <br>
       <hr>
       <a id="cpf">CPF</a>
-          <a id="FullName">Nome Completo</a>
+      <a id="FullName">Nome Completo</a>
       <hr>
     </div>
     <div class="card text-center m-3">
       <br>
       <div id="usuarios">
         <div>
-          <p id="UserCpf" v-for="item in pageOfItems" v-mask="'###.###.###-##'" :key="item.id">{{ item.cpf | VMask(mask)
+          <p id="UserCpf" v-for="item in pageOfItems"  :key="item.id">{{ item.cpf | VMask(mask)
           }} <br></p>
         </div>
         <div id="nome">
           <br>
           <br>
-          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }} <br> <i @click="ModalOpen" class="fa fa-eye"
-              id="icon" aria-hidden="true"></i> </p>
+          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }}  <i
+              @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </p>
         </div>
       </div>
-      <ModalEye v-show="openModal" />
+      <ModalEye :User_Prop="User_Prop" v-show="openModal" />
       <br>
       <br>
       <hr>
 
     </div>
     <div class="card-footer pb-0 pt-3">
-      <jw-pagination :disableDefaultStyles="true" value="Continuar"  :labels="customLabels"
-        :items="users" @changePage="onChangePage"></jw-pagination>
+      <jw-pagination :disableDefaultStyles="true" value="Continuar" :labels="customLabels" :items="users"
+        @changePage="onChangePage"></jw-pagination>
     </div>
     <br>
   </div>
@@ -62,14 +62,16 @@ export default {
   data() {
     return {
       users: [{}],
+      User_Prop: {} ,
       pageOfItems: [],
       customLabels,
       mask: "###.###.###.-##",
-      openModal: false
+      openModal: false,
+      
     };
   },
   created() {
-       axios.get("/api/users/")
+    axios.get("/api/users/")
       .then((res) => this.users = res.data)
       .then((json) => {
         this.users = json.users
@@ -80,9 +82,11 @@ export default {
       this.pageOfItems = users;
       console.log(users);
     },
-      ModalOpen(){
-    this.openModal = true  
-  },
+    ModalOpen(item) {
+      this.User_Prop = item
+      this.openModal = true
+      console.log(item);
+    },
   },
 };
 </script>
@@ -107,8 +111,9 @@ export default {
   font-size: 19px;
   margin-left: 5%;
 }
-.buttons{
-  margin-top:7% ;
+
+.buttons {
+  margin-top: 7%;
 }
 
 .btn {
