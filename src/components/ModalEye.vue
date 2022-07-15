@@ -1,11 +1,9 @@
 <template>
-  <section class="information-modal">
+  <section class="information-modal"  v-show="modal">
     <span v-on:click="close" class="close">X</span>
     <nav class="navbar-modal">
       <h4>Detalhes do usuário</h4>
-      <button class="btn-ic-close" @click="closeModal">
-        <font-awesome-icon icon="fa-solid fa-xmark" class="ic-close" />
-      </button>
+    
     </nav>
 
     <div class="contain-all-information">
@@ -31,15 +29,6 @@
         </div>
         <div class="information-content">
           <label>Contato</label>
-          <span>
-            <p>
-              <font-awesome-icon
-                icon="fa-brands fa-whatsapp"
-                class="ic-whatsapp"
-              />
-            </p>
-            <p>Whatsapp</p>
-          </span>
         </div>
         <div class="information-content">
           <label>Email</label>
@@ -66,6 +55,7 @@ export default {
     },
     },
 }
+</script>
 </script>
 
 <style scoped>
@@ -128,11 +118,6 @@ span {
 }
 label {
   font-size: 14px;
-}
-.ic-whatsapp {
-  width: 21px;
-  height: 21px;
-  margin-right: 5px;
 }
 .modal-email {
   font-size: 13px;
