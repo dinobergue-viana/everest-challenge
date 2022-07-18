@@ -2,7 +2,7 @@
 <div>
   <div class="content">
 
-  <UserSwich class="ListSwich" @changeCad="change" @changeList="change" />
+  
   <UserCad v-show="swich==false"/>
   <Pagination @SendUser="createModal" v-show="swich==true"/>
   
@@ -15,24 +15,18 @@
 <script>
 
 import Pagination from "@/components/List/Pagination.vue"
-import UserSwich from "../components/List/UserSwich.vue"
 import UserCad from "@/components/List/UserCad.vue"
 import UserModal from "@/components/UserModal.vue"
   export default {
     
     name: "app",
     components:{
-      UserSwich,
       Pagination,
       UserCad,
       UserModal
     },
     
     methods: {
-      change(value){
-        this.swich = value
-      },
-
       createModal(userInfo){
         this.userData = userInfo
         this.showModal = true
@@ -74,6 +68,7 @@ import UserModal from "@/components/UserModal.vue"
 .ListSwich{
     margin-bottom: 1vw
   }
-  
+
+
 
 </style>
