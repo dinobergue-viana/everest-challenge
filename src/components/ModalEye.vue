@@ -1,6 +1,6 @@
 <template>
   <section class="information-modal" v-show="modal">
-    <span v-on:click="close" class="close">X</span>
+    <span v-on:click="closeModal" class="close">X</span>
     <nav class="navbar-modal">
       <h4>Detalhes do usuário</h4>
 
@@ -57,8 +57,8 @@ export default {
     };
   },
   methods: {
-    close: function () {
-      if (this.modal == true) {
+      closeModal() {
+      if (this.modal) {
         this.modal = false
       }
     },

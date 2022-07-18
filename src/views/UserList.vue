@@ -77,14 +77,13 @@ export default {
   methods: {
     onChangePage(users) {
       this.pageOfItems = users;
-      console.log(users);
+
     },
     ModalOpen(item) {
       this.User_Prop = item
       this.openModal = true
-      console.log(item);
     },
-  },
+  },  
 };
 </script>
 <style scoped>
