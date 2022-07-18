@@ -14,26 +14,20 @@
       <a id="FullName">Nome Completo</a>
       <hr>
     </div>
-    <div class="card text-center m-3">
+    <div id="renderResult">
       <br>
-      <div id="usuarios">
-        <div>
-          <p id="UserCpf" v-for="item in pageOfItems"  :key="item.id">{{ item.cpf | VMask(mask)
-          }} <br></p>
-        </div>
-        <div id="nome">
+      <ul v-for="item in pageOfItems" :key="item.id">
+    
+          <li id="content-cpf" >{{ item.cpf | VMask(mask)}} <br></li>
+        
           <br>
           <br>
-          <p id="UserName" v-for="item in pageOfItems" :key="item.id">{{ item.fullname }}  <i
-              @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </p>
-        </div>
-      </div>
+          <li id="content-name" >{{ item.fullname }}  </li>
+          <li><i @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
+      </ul>
       <ModalEye :User_Prop="User_Prop" v-show="openModal" />
-      <br>
-      <br>
-      <hr>
-
     </div>
+    <hr>
     <div class="card-footer pb-0 pt-3">
       <jw-pagination :disableDefaultStyles="true" value="Continuar" :labels="customLabels" :items="users"
         @changePage="onChangePage"></jw-pagination>
@@ -56,7 +50,7 @@ const customLabels = {
 export default {
   components: {
     NavList,
-    ModalEye
+  ModalEye
 
   },
   data() {
@@ -121,7 +115,7 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 16px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 11px;
@@ -146,42 +140,6 @@ hr {
   margin-left: 294px;
 }
 
-.user {
-  display: inline;
-}
-
-#usuarios {
-  display: inline-flex;
-  margin-top: -84px;
-  margin-left: 23%;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-#UserCpf {
-  margin-left: 17%;
-  margin-top: 35%;
-}
-
-#UserName {
-  margin-left: -225%;
-  margin-top: 15%;
-  padding-left: 108%;
-  display: block;
-  height: 47px;
-}
-
-#nome {
-  margin-left: 107%;
-  margin-top: -7%;
-  padding-left: 8%;
-}
-
-hr {
-  margin-left: 13%;
-  margin-right: 18%;
-}
-
 .pagination {
   cursor: pointer;
   position: static;
@@ -193,8 +151,26 @@ hr {
   font-size: 22px;
 }
 
+#renderResult {
+  width: 64vw;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 15vw;
+}
+ul {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+ul li {
+  font-size: 13px;
+  list-style-type: none;
+}
 
-#icon {
-  margin-left: 308%;
+#content-name {
+ margin-right: 15vw;
 }
 </style>  
