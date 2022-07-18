@@ -11,7 +11,7 @@
             <ul>
                 <div class="userItem">
                     <span>Nome Completo</span>
-                    <li>{{User.fullname}}</li>
+                    <li class="bigField">{{User.fullname}}</li>
                 </div>
                  <div class="userItem">
                     <span>CPF</span>
@@ -29,21 +29,31 @@
                 </div>
                 <div class="userItem">
                     <span>Contato</span>
-                    <li v-show="User.checkZap">
+                    <li v-show="User.checkZap && !User.checkSMS">
                         <f-icon icon="fa-brands fa-whatsapp" />
                         Whatsapp
                     </li>
-                    <li v-show="User.checkSMS">
-                        <f-icon icon="fa-solid fa-envelope" />
+                    <li v-show="User.checkSMS && !User.checkZap">
+                        <f-icon  icon="fa-solid fa-envelope" />
                         Email e SMS
+                        <br>
+                    </li>
+                    <li v-show="User.checkZap && User.checkSMS">
+                        <f-icon icon="fa-brands fa-whatsapp" />
+                        Whatsapp
+                        <br>
+                        <f-icon  icon="fa-solid fa-envelope" />
+                        Email e SMS
+                        <br>
                     </li>
                     <li v-show="!User.checkZap && !User.checkSMS">
                         Não abilitado
                     </li>
                 </div>
-                <span>Email</span>
-                <li>{{User.email}}</li>
-
+                <div>
+                    <span>Email</span>
+                    <li class="bigField">{{User.email}}</li>
+                </div>
             </ul>
         </div>        
     </div>
@@ -98,7 +108,7 @@ export default {
         background-color: rgb(255, 255, 255);
         position: absolute;
         align-content: center;
-        z-index: 5;
+        z-index: 2;
 
     }  
     
@@ -112,7 +122,7 @@ export default {
     }
 
     .title{
-        margin-right:33%;
+        margin-right:30%;
     }
 
     .xIcon{
@@ -130,22 +140,50 @@ export default {
     .user-data{
         width: 88%;
         height: 15vw;
-        border:solid 2px gray;
+        border:solid 2px rgb(227, 227, 227);
         border-style: dashed ;
-        margin-left: 2.0vw;
-        padding: 2vw;
+        margin-left: 1.85vw;
+        padding: 3vw 0vw 0vw 0vw;
         display:flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     .userItem{
-        margin-bottom: 2vw;
+        margin: 0em 0.5em 2.7em 0.5em;
+        width: 10vw;
+        height: auto;
+        word-break: break-all;
+    }
+
+    .bigField{
+        z-index: 2;
+        width: 10vw;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        
+    }
+
+    .bigField:hover{
+        overflow:visible;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 1px 1100px rgba(0, 0, 0, 0.43);
+        width: auto;
+        height: auto;
     }
 
     li{
         list-style: none;
+        width: 33%;
+        position:absolute;
+        z-index: 1;
     }
 
+    ul{
+        width: auto;
+        height: auto;
+        }
+            
     span{
         font-weight: 700;
     }
