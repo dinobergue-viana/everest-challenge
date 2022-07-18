@@ -48,7 +48,7 @@ export default {
         justify-content: space-around;
         width: 22vw;
         height: 1vw;
-        margin: 10vw 0 2vw 10.5vw;
+        margin: 10vw 0 2vw 38.5%;
         position: absolute;
     }
 
