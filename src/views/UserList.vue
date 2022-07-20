@@ -12,17 +12,22 @@
     </div>
     <div id="renderResult">
       <br>
-      <ul v-for="item in pageOfItems" :key="item.id">
+      <ul v-for="item in pageOfItems" :key="item.id" >
 
         <li id="content-cpf">{{ item.cpf | VMask(mask) }} <br></li>
 
-        <br>
+        <br> 
         <br>
         <li id="content-name">{{ item.fullname }} </li>
         <li><i @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
       </ul>
+       
       <ModalEye :User_Prop="User_Prop" v-show="openModal" />
     </div>
+    <ul v-for="(informacoes, index) in informacoes" :key="index">
+          <li id="content-cpf"> {{informacoes.cpf}}</li>
+            <li id="content-name">{{ informacoes.name }} </li>
+        </ul>
     <hr>
     <div class="card-footer pb-0 pt-3">
       <jw-pagination :disableDefaultStyles="true" value="Continuar" :labels="customLabels" :items="users"
@@ -59,12 +64,16 @@ export default {
       customLabels,
       mask: "###.###.###.-##",
       openModal: false,
+      informacoes:[],
+
 
     };
   },
   created() {
     axios.get("/api/users/")
       .then((res) => this.users = res.data.users)
+       this.informacoes = (localStorage.getItem("informacoes")) ?  JSON.parse(localStorage.getItem("informacoes")) : [];
+           
   },
   methods: {
     onChangePage(users) {

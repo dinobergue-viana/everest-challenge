@@ -26,10 +26,10 @@
         <div>
           <div id="email">
 
-            <input v-model="email" required placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
+            <input  v-model="form.email" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
 
 
-            <input required type="text" placeholder="Sua Cidade" class="mediumInput paddingInput" />
+            <input type="text"  v-model="form.cidade" placeholder="Sua Cidade" class="mediumInput paddingInput" />
 
           </div>
         </div>
@@ -38,14 +38,14 @@
           <label>Celular</label>
         </div>
         <div id="numbers">
-          <input  v-model="form.cpf" v-maska="'###.###.###-##'"  maxlength="14" required placeholder='000.000.000-00'
+          <input  v-model="form.cpf" maxlength="14" placeholder='000.000.000-00'
             type="text" class="mediumInput" />
-          <input v-mask="'(##) #####-#####'" placeholder="(00) 111111-22222" type="text" v-model="telefone"
-            autocomplete="off" required maxlength="15" minlength="14" class="mediumInput paddingInput" />
+          <input placeholder="(00) 111111-22222" type="text" v-model="form.telefone"
+            autocomplete="off"  maxlength="15" minlength="14" class="mediumInput paddingInput" />
         </div>
         <label>Data de nascimento</label>
         <br />
-        <input v-model="date" type="date" class="mediumInput" />
+        <input v-model="form.date" type="date" class="mediumInput" />
         <p class="bottonText">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </p>
@@ -53,11 +53,11 @@
         <p class="bottonText">Mattis semper odio preretium vestibulum nulla</p>
         <br />
         <div id="sms">
-          <input v-model="email" v-on:click="email_mansage" type="checkbox" />
+          <input type="checkbox" />
           <label>Email e SMS</label>
         </div>
         <div id="mensageApp">
-          <input v-model="whats" v-on:click="wttp_mansage" type="checkbox" />
+          <input type="checkbox" />
           <label>Whatsapp</label>
           <br>
           <hr>
@@ -65,7 +65,7 @@
         <div class="btns">
           <hr>
           <br>
-           <button type="submit" id="concluir" variant="outline-primary" @click="Save"> Salvar </button>
+           <button type="submit" id="concluir" @click="SaveUser" > Salvar </button>
 
           <button id="cancelar">Cancelar</button>
         </div>
@@ -88,15 +88,25 @@ export default {
     return {
       form: {
         name: "",
+        email:"",
+        cidade:"",
+        telefone:"",
+        date:"",
         cpf: ""
       },
-      methods: {
-        Save(){
+     
+    }
+    
+  },
+   methods: {
+        SaveUser(){
             let informacoes = (localStorage.getItem("informacoes")) ?  JSON.parse(localStorage.getItem("informacoes")) : [];
+            informacoes.push(this.form);
+            localStorage.setItem("informacoes", JSON.stringify(informacoes))
+            this.$router.push({name: "users"})
         }
       },
-    }
-  },
+  
 }
 </script>
 
