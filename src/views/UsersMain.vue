@@ -52,17 +52,12 @@ import UserModal from "@/components/UserModal.vue"
 
 <style scoped>
 
-  *{
-    font-size: min(1vw);
-  }
-
 
 .content{
     padding-left: 2em;
-    margin-left: 27%;
-    width: 45.2vw;
-    align-content: center;
-
+    width: 100%;
+    justify-content: center;
+    display: flex;
   }
 
 .ListSwich{

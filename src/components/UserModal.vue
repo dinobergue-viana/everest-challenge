@@ -87,6 +87,11 @@ export default {
 </script>
 
 <style scoped>
+
+    *{
+        font-size: clamp(1vw,0.5em + 0.5vw, 1.5em);
+    }
+
     .all{
         display:flex;
         justify-content: center;
@@ -94,10 +99,8 @@ export default {
     .modal-shadow{
         width: 100%;
         height: 43.35vw;
-        background-color: rgba(0, 0, 0, 0.527);
         position: absolute;
         z-index: 1;
-
     }
 
     .modal-content{
@@ -109,6 +112,7 @@ export default {
         position: absolute;
         align-content: center;
         z-index: 2;
+        box-shadow: 0 0 0 1000vw rgba(0, 0, 0, 0.517);
 
     }  
     
@@ -161,7 +165,6 @@ export default {
         overflow: hidden;
         text-overflow:ellipsis;
         white-space:nowrap;
-        
     }
 
     .bigField:hover{
@@ -174,7 +177,7 @@ export default {
 
     li{
         list-style: none;
-        width: 33%;
+        width: auto;
         position:absolute;
         z-index: 1;
     }

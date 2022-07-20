@@ -21,9 +21,9 @@
     color: azure; 
   }
   #title{
-      font-size: clamp(0.3em, 0.7vw, 1em);
+      font-size: clamp(0.1em,0.4rem + 0.4vw, 1em);
       font-weight: 700;
-      margin-top:0.8vw;
+      margin-top:max(0.5vw);
     }
 </style>
 

@@ -1,6 +1,6 @@
 <template>
 <div class="box">
-<NewButtom @click.native="a"/>
+<NewButtom class="newButton" @click.native="a"/>
   <div v-show="hasUsers" class="list_box">
     <ul>
       <h3>CPF</h3>
@@ -41,7 +41,6 @@ const MenuLabels = {
 };
 
 import axios from 'axios'
-import ValidateTest from "../../utils/validateCPF.ts"
 import NewButtom from '@/components/List/NewButtom.vue'
 import NothingHere from "../NothingHere.vue"
 export default {
@@ -53,7 +52,6 @@ export default {
             limit:6,
             MenuLabels,
             hasUsers:true,
-            ValidateTest,
         };
     },
     components:{
@@ -70,7 +68,6 @@ export default {
           this.mask = '###.###.###-##'
       if(this.Users.length == 0){
         this.hasUsers = false
-        this.ValidateTest.validate("nada por aqui")
       }
       })  
     },
@@ -95,34 +92,39 @@ export default {
     animation-name: boxIn;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    max-width:45%;
-    min-width: 10%;
-    margin-top:-4vw ;
+    width: auto;
+    height: auto;
   }
 
   @keyframes boxIn{
-    from{margin:20vw; opacity: 0%;}
-    to{margin:10vw 0vw 0vw 0vw;opacity: 100%;}
+    from{margin:8vw; opacity: 0%;}
+    to{margin:10vw;opacity: 100%;}
   }
+
+  .list_box{
+    width: 45vw;
+    padding: 0.5vw;
+    display:grid;
+    grid-template-columns: 40% 60%;
+    margin-top: 15vh
+  }
+
+  .newButton{
+    margin:3vh 0 0 1.5vh
+  }
+
   li{
-    margin: 1vw 0 1vw 0;
+    margin: 2vw 0vw 1vw 0;
     font-weight: 100;
     list-style: none;
-    font-size:110%
+    font-size: clamp(1vw,0.5em + 0.5vw, 1.5em);
   }
 
   h3{
     border-top: solid 1px rgb(223, 219, 219);
     border-bottom: solid 1px rgb(223, 219, 219);
     padding: 1vw 0 1vw 2vw;
-  }
-
-  .list_box{
-    width: 42.2vw;
-    padding: 0.5vw;
-    display:grid;
-    grid-template-columns: 40% 60%;
-    margin-top: min(20%, 50vw);
+    font-size: clamp(1vw,0.5em + 0.5vw, 1.5em);
   }
   
   .namesList{
@@ -133,18 +135,8 @@ export default {
   .fullname{
     text-overflow: ellipsis;
     overflow: hidden;
-
     width: 20vw;
-    
-    white-space: nowrap;
-  
-  
-  
-  /* padding: 20px;
-  font-size: 1.3rem;
-  margin: 0;
-  background: white; */
- 
+    white-space: nowrap; 
   }
 
   .itens_box{
@@ -160,6 +152,7 @@ export default {
     width: 100.2%;
     text-align: center;
     margin-top:1vw;
+    font-size: clamp(1vw,0.5em + 0.5vw, 1.5em);;
   }
 
   .noUser{
@@ -181,10 +174,10 @@ export default {
     background-color: rgba(0, 0, 0, 0.757);
   }
 
-@media (max-width:600px){
-
-  
-
+@media (max-width:562px){
+  .list_box{
+    width: 60vw;
+  }
 
 }
 </style>
