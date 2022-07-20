@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    
-    <Navbar />
-    <UserSwich  @changeCad="change" @changeList="change" />
+    <div class="staticContent">
+      <Navbar />
+      <UserSwich  @changeCad="change" @changeList="change" />
+    </div>
     <div class="view-container">
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
@@ -47,6 +48,21 @@ export default {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+  .staticContent{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height:24vh;
+    margin-bottom: -17vh;
+    position: absolute;
+  }
+
+  .view-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+  }
 
 .ListSwich{
     margin:0vw 0vw 1vw 5vw
