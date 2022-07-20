@@ -18,7 +18,7 @@
         </div>
         <label>Nome completo</label>
         <br />
-        <input type="text" v-model="nome" required placeholder='     Seu nome' class="bigInput" />
+        <input type="text"  v-model="form.name" placeholder='Seu nome' class="bigInput" />
         <div id="labelEmail">
           <label>E-mail</label>
           <label id="cidade">Cidade</label>
@@ -38,7 +38,7 @@
           <label>Celular</label>
         </div>
         <div id="numbers">
-          <input v-maska="'###.###.###-##'" v-model="cpf" maxlength="14" required placeholder='000.000.000-00'
+          <input  v-model="form.cpf" v-maska="'###.###.###-##'"  maxlength="14" required placeholder='000.000.000-00'
             type="text" class="mediumInput" />
           <input v-mask="'(##) #####-#####'" placeholder="(00) 111111-22222" type="text" v-model="telefone"
             autocomplete="off" required maxlength="15" minlength="14" class="mediumInput paddingInput" />
@@ -65,7 +65,8 @@
         <div class="btns">
           <hr>
           <br>
-          <button id="concluir">Continuar</button>
+           <button type="submit" id="concluir" variant="outline-primary" @click="Save"> Salvar </button>
+
           <button id="cancelar">Cancelar</button>
         </div>
       </form>
@@ -81,7 +82,20 @@ import HeaderList from "../components/HeaderList.vue"
 export default {
   components: {
     NavList,
-    HeaderList
+    HeaderList,
+  },
+   data() {
+    return {
+      form: {
+        name: "",
+        cpf: ""
+      },
+      methods: {
+        Save(){
+            let informacoes = (localStorage.getItem("informacoes")) ?  JSON.parse(localStorage.getItem("informacoes")) : [];
+        }
+      },
+    }
   },
 }
 </script>

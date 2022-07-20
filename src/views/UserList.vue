@@ -1,8 +1,8 @@
 <template>
-  <div >
+  <div>
     <NavList />
     <br>
-    <HeaderList/>
+    <HeaderList />
     <div class="user">
       <br>
       <hr>
@@ -13,13 +13,13 @@
     <div id="renderResult">
       <br>
       <ul v-for="item in pageOfItems" :key="item.id">
-    
-          <li id="content-cpf" >{{ item.cpf | VMask(mask)}} <br></li>
-        
-          <br>
-          <br>
-          <li id="content-name" >{{ item.fullname }}  </li>
-          <li><i @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
+
+        <li id="content-cpf">{{ item.cpf | VMask(mask) }} <br></li>
+
+        <br>
+        <br>
+        <li id="content-name">{{ item.fullname }} </li>
+        <li><i @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
       </ul>
       <ModalEye :User_Prop="User_Prop" v-show="openModal" />
     </div>
@@ -46,20 +46,20 @@ const customLabels = {
 };
 export default {
   components: {
-  NavList,
-  ModalEye,
-  HeaderList
+    NavList,
+    ModalEye,
+    HeaderList
 
   },
   data() {
     return {
       users: [{}],
-      User_Prop: {} ,
+      User_Prop: {},
       pageOfItems: [],
       customLabels,
       mask: "###.###.###.-##",
       openModal: false,
-      
+
     };
   },
   created() {
@@ -75,7 +75,7 @@ export default {
       this.User_Prop = item
       this.openModal = true
     },
-  },  
+  },
 };
 </script>
 <style scoped>
@@ -111,19 +111,21 @@ hr {
   justify-content: space-evenly;
   margin-left: 15vw;
 }
+
 ul {
   display: flex;
   padding: 5px;
   align-items: center;
   justify-content: space-between;
 }
+
 ul li {
- font-size: 19px;
+  font-size: 19px;
   list-style-type: none;
 }
 
 #content-name {
- margin-right: 19vw;
+ margin-right: 23vw;
 
 }
 </style>  
