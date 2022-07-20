@@ -18,14 +18,13 @@ export default {
   .newUser{
     width:12em;
     height:3em;
-    font-size: min(1vw);
+    font-size: 1vw;
+    font-weight: 700;
     position: absolute;
     float: right;
     background-color: rgb(255, 26, 95);
     border: none;
-    border-radius: 12px;
-    margin:3vw;
-
+    border-radius: 9px;
     color:white;
   }
 </style>
