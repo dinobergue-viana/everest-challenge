@@ -10,23 +10,22 @@
       <div class="informations">
         <div class="information-content">
           <label>Cpf</label>
-          <span>{{ User_Prop.cpf }}</span>
-          <span></span>
+          <span>{{ userProp.cpf }}</span>
         </div>
         <div class="information-content">
           <label>Nome completo</label>
-          <span>{{ User_Prop.fullname }}</span>
+          <span>{{ userProp.fullname }}</span>
         </div>
         <div class="information-content">
           <label>Nascimento</label>
-          <span>{{ User_Prop.birthDate }}</span>
+          <span>{{ userProp.birthDate }}</span>
         </div>
       </div>
 
       <div class="informations">
         <div class="information-content">
           <label>Celular</label>
-          <span>{{ User_Prop.phone }}</span>
+          <span>{{ userProp.phone}}</span>
         </div>
         <div class="information-content">
           <label>Contato</label>
@@ -36,7 +35,7 @@
         </div>
         <div class="information-content">
           <label>Email</label>
-          <span class="modal-email">{{ User_Prop.email}}</span>
+          <span class="modal-email">{{ userProp.email}}</span>
         </div>
       </div>
     </div>
@@ -46,7 +45,7 @@
 <script>
 export default {
   props: {
-    User_Prop: {
+    userProp: {
       type: Object
     }
   },
@@ -58,8 +57,8 @@ export default {
   },
   methods: {
       closeModal() {
-      if (this.modal) {
-        this.modal = false
+          if (this.modal) {
+           this.modal = false
       }
     },
   },

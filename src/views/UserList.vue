@@ -15,13 +15,11 @@
       <ul v-for="item in pageOfItems" :key="item.id">
     
           <li id="content-cpf" >{{ item.cpf | VMask(mask)}} <br></li>
-        
-          <br>
-          <br>
+
           <li id="content-name" >{{ item.fullname }}  </li>
           <li><i @click="ModalOpen(item)" class="fa fa-eye" id="icon" aria-hidden="true"></i> </li>
       </ul>
-      <ModalEye :User_Prop="User_Prop" v-show="openModal" />
+      <ModalEye :userProp="userProp" v-show="openModal" />
     </div>
     <hr>
     <div class="card-footer pb-0 pt-3">
@@ -38,12 +36,7 @@ import ModalEye from "@/components/ModalEye.vue";
 import NavList from "../components/NavList.vue"
 import HeaderList from "../components/HeaderList.vue"
 
-const customLabels = {
-  first: '<<',
-  last: '>>',
-  previous: '<',
-  next: '>'
-};
+
 export default {
   components: {
   NavList,
@@ -54,17 +47,22 @@ export default {
   data() {
     return {
       users: [{}],
-      User_Prop: {} ,
+      userProp: {} ,
       pageOfItems: [],
       customLabels,
       mask: "###.###.###.-##",
       openModal: false,
       
     };
+    
   },
   created() {
-    axios.get("/api/users/")
-      .then((res) => this.users = res.data.users)
+      try {
+      const response = axios.get("/api/users/")
+      this.users = response.data.users
+    } catch(error) {
+      Alert(`Ocorreu um erro ao buscar usuários: ${error.message}`)
+    }
   },
   methods: {
     onChangePage(users) {
@@ -72,7 +70,7 @@ export default {
 
     },
     ModalOpen(item) {
-      this.User_Prop = item
+      this.userProp = item
       this.openModal = true
     },
   },  
