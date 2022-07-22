@@ -3,6 +3,8 @@
     <NavList />
     <br>
     <HeaderList />
+    <hr>
+    <br>
     <div id="centralBox">
       <form id="form1">
 
@@ -18,18 +20,18 @@
         </div>
         <label>Nome completo</label>
         <br />
-        <input type="text"  v-model="form.name" placeholder='Seu nome' class="bigInput" />
+        <input type="text" v-model="form.name" placeholder='Seu nome' class="bigInput" />
         <div id="labelEmail">
           <label>E-mail</label>
-          <label id="cidade">Cidade</label>
+          <label id="cidade">Confirmar o Email</label>
         </div>
         <div>
           <div id="email">
 
-            <input  v-model="form.email" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
+            <input v-model="form.email" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
 
 
-            <input type="text"  v-model="form.cidade" placeholder="Sua Cidade" class="mediumInput paddingInput" />
+            <input type="text" v-model="form.confirmEmail" placeholder="confirme seu email" class="mediumInput paddingInput" />
 
           </div>
         </div>
@@ -38,10 +40,9 @@
           <label>Celular</label>
         </div>
         <div id="numbers">
-          <input  v-model="form.cpf" maxlength="14" placeholder='000.000.000-00'
-            type="text" class="mediumInput" />
-          <input placeholder="(00) 111111-22222" type="text" v-model="form.telefone"
-            autocomplete="off"  maxlength="15" minlength="14" class="mediumInput paddingInput" />
+          <input v-model="form.cpf" maxlength="14" placeholder='000.000.000-00' type="text" class="mediumInput" />
+          <input placeholder="(00) 111111-22222" type="text" v-model="form.telefone" autocomplete="off" maxlength="15"
+            minlength="14" class="mediumInput paddingInput" />
         </div>
         <label>Data de nascimento</label>
         <br />
@@ -65,7 +66,7 @@
         <div class="btns">
           <hr>
           <br>
-           <button type="submit" id="concluir" @click="SaveUser" > Salvar </button>
+          <button type="submit" id="concluir" @click="userCreate(form)"> Salvar </button>
 
           <button id="cancelar">Cancelar</button>
         </div>
@@ -78,35 +79,44 @@
 <script>
 import NavList from "../components/NavList.vue"
 import HeaderList from "../components/HeaderList.vue"
+import axios from 'axios'
 
 export default {
   components: {
     NavList,
     HeaderList,
   },
-   data() {
+  data() {
     return {
       form: {
         name: "",
-        email:"",
-        cidade:"",
-        telefone:"",
-        date:"",
+        email: "",
+        confirmEmail: "",
+        telefone: "",
+        date: "",
         cpf: ""
       },
-     
+
     }
+
+  },
+  methods: {
+    
+    async userCreate(form) {
+      try {
+           const newUser = {fullname:form.name, email:form.email, confirmEmail:form.confirmEmail, telefone:form.telefone, date:form.date,cpf:form.cpf} 
+           const response = await axios.post ("/api/users", newUser)
+          this.$router.push("/")
+}
+         catch (error){
+            console.log(error);
+       }
+  
+    }
+  
     
   },
-   methods: {
-        SaveUser(){
-            let informacoes = (localStorage.getItem("informacoes")) ?  JSON.parse(localStorage.getItem("informacoes")) : [];
-            informacoes.push(this.form);
-            localStorage.setItem("informacoes", JSON.stringify(informacoes))
-            this.$router.push({name: "users"})
-        }
-      },
-  
+
 }
 </script>
 
@@ -122,6 +132,11 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+hr {
+  margin-left: 13%;
+  margin-right: 18%;
 }
 
 #contents {

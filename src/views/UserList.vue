@@ -25,7 +25,7 @@
       <ModalEye :User_Prop="User_Prop" v-show="openModal" />
     </div>
     <ul v-for="(informacoes, index) in informacoes" :key="index">
-          <li id="content-cpf"> {{informacoes.cpf}}</li>
+          <li id="cpfUser"> {{informacoes.cpf}}</li>
             <li id="content-name">{{ informacoes.name }} </li>
         </ul>
     <hr>
@@ -137,4 +137,5 @@ ul li {
  margin-right: 23vw;
 
 }
+
 </style>  
