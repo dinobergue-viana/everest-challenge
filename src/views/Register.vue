@@ -23,7 +23,7 @@
         <input type="text" v-model="form.name" placeholder='Seu nome' class="bigInput" />
         <div id="labelEmail">
           <label>E-mail</label>
-          <label id="cidade">Confirmar o Email</label>
+          <label id="confimEmail">Confirmar o Email</label>
         </div>
         <div>
           <div id="email">
@@ -31,7 +31,8 @@
             <input v-model="form.email" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
 
 
-            <input type="text" v-model="form.confirmEmail" placeholder="confirme seu email" class="mediumInput paddingInput" />
+            <input type="text" v-model="form.confirmEmail" placeholder="confirme seu email"
+              class="mediumInput paddingInput" />
 
           </div>
         </div>
@@ -40,13 +41,14 @@
           <label>Celular</label>
         </div>
         <div id="numbers">
-          <input v-model="form.cpf" maxlength="14" placeholder='000.000.000-00' type="text" class="mediumInput" />
-          <input placeholder="(00) 111111-22222" type="text" v-model="form.telefone" autocomplete="off" maxlength="15"
-            minlength="14" class="mediumInput paddingInput" />
+          <input v-model="form.cpf" v-mask="'###.###.###-##'" maxlength="14" placeholder='000.000.000-00' type="text"
+            class="mediumInput" />
+          <input v-mask="'(##) #####-#####'" placeholder="(00) 111111-22222" type="text" v-model="form.phone"
+            autocomplete="off" maxlength="15" minlength="14" class="mediumInput paddingInput" />
         </div>
         <label>Data de nascimento</label>
         <br />
-        <input v-model="form.date" type="date" class="mediumInput" />
+        <input v-model="form.birthDate" type="date" class="mediumInput" />
         <p class="bottonText">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit
         </p>
@@ -88,36 +90,69 @@ export default {
   },
   data() {
     return {
+
       form: {
         name: "",
         email: "",
         confirmEmail: "",
-        telefone: "",
-        date: "",
+        phone: "",
+        birthDate: "",
         cpf: ""
       },
-
     }
-
   },
+
   methods: {
-    
-    async userCreate(form) {
-      try {
-           const newUser = {fullname:form.name, email:form.email, confirmEmail:form.confirmEmail, telefone:form.telefone, date:form.date,cpf:form.cpf} 
-           const response = await axios.post ("/api/users", newUser)
-          this.$router.push("/")
-}
-         catch (error){
-            console.log(error);
-       }
-  
-    }
-  
-    
-  },
+     validateCpf() {
+      let firstDigitAfterDash = 0
+      let arrayCpf = Array.from(this.cpf.replaceAll('.', '').replace('-', ''))
 
+      for (let i = 0; i < arrayCpf.length - 2; i++) {
+        firstDigitAfterDash += parseInt(arrayCpf[i]) * (10 - i)
+      }
+      firstDigitAfterDash = 11 - (firstDigitAfterDash % 11)
+      firstDigitAfterDash = firstDigitAfterDash === 10 ? 0 : firstDigitAfterDash
+
+      if (parseInt(arrayCpf[arrayCpf.length - 2]) !== firstDigitAfterDash) {
+        return false
+      }
+
+      let secondDigitAfterDash = 0
+      for (let i = 0; i < arrayCpf.length - 1; i++) {
+        secondDigitAfterDash += parseInt(arrayCpf[i]) * (11 - i)
+      }
+      secondDigitAfterDash = 11 - (secondDigitAfterDash % 11)
+      secondDigitAfterDash = secondDigitAfterDash === 10 ? 0 : secondDigitAfterDash
+
+      return secondDigitAfterDash === parseInt(arrayCpf[arrayCpf.length - 1])
+    },
+    async userCreate(form) {
+      if (form.name == "") {
+        alert("Preencha Seu Nome")
+      } else if (form.email == "") {
+        alert("Preencha seu Email")
+      } else if (form.confirmEmail == "" && form.confirmEmail != form.email) {
+        alert("Os Emails devem Ser Iguais")
+      } else if (form.cpf == "") {
+        alert("Preencha Seu CPF")
+      } else if (form.phone == "") {
+        alert("Preencha Seu Telefone")
+      } else if (this.cpfValidate()) {
+        alert("Preencha Sua Data de Nascimento")
+      } else {
+        try {
+          const newUser = { fullname: form.name, email: form.email, confirmEmail: form.confirmEmail, phone: form.phone, birthDate: form.birthDate, cpf: form.cpf }
+          const response = await axios.post("/api/users", newUser)
+          this.$router.push("/")
+        }
+        catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  }
 }
+
 </script>
 
 <style scoped>
@@ -135,8 +170,8 @@ input[type="number"] {
 }
 
 hr {
-  margin-left: 13%;
-  margin-right: 18%;
+  margin-left: 9%;
+  margin-right: 8%;
 }
 
 #contents {
@@ -193,7 +228,7 @@ input {
 #labelEmail {
   display: flex;
   justify-content: space-between;
-  width: 494px;
+  width: 568px;
 }
 
 #labelNumbers {

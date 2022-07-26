@@ -25,7 +25,7 @@
       <ModalEye :User_Prop="User_Prop" v-show="openModal" />
     </div>
     <ul v-for="(informacoes, index) in informacoes" :key="index">
-          <li id="cpfUser"> {{informacoes.cpf}}</li>
+          <li id="content-cpf"> {{informacoes.cpf}}</li>
             <li id="content-name">{{ informacoes.name }} </li>
         </ul>
     <hr>
@@ -62,7 +62,7 @@ export default {
       User_Prop: {},
       pageOfItems: [],
       customLabels,
-      mask: "###.###.###.-##",
+      mask: "###.###.###-##",
       openModal: false,
       informacoes:[],
 
@@ -82,7 +82,9 @@ export default {
     },
     ModalOpen(item) {
       this.User_Prop = item
+      if(this.openModal == false){
       this.openModal = true
+      }
     },
   },
 };

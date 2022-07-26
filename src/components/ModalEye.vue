@@ -1,8 +1,8 @@
 <template>
   <section class="information-modal" v-show="modal">
-    <span v-on:click="closeModal" class="close">X</span>
     <nav class="navbar-modal">
-      <h4>Detalhes do usuário</h4>
+      <span v-on:click="closeModal" class="close">X</span>
+       <h4>Detalhes do usuário</h4>
 
     </nav>
 
@@ -10,7 +10,7 @@
       <div class="informations">
         <div class="information-content">
           <label>Cpf</label>
-          <span>{{ User_Prop.cpf }}</span>
+          <span>{{ User_Prop.cpf | VMask(mask) }}</span>
           <span></span>
         </div>
         <div class="information-content">
@@ -26,7 +26,7 @@
       <div class="informations">
         <div class="information-content">
           <label>Celular</label>
-          <span>{{ User_Prop.phone }}</span>
+          <span>{{ User_Prop.phone | VMask(maskPhone) }}</span>
         </div>
         <div class="information-content">
           <label>Contato</label>
@@ -36,7 +36,7 @@
         </div>
         <div class="information-content">
           <label>Email</label>
-          <span class="modal-email">{{ User_Prop.email}}</span>
+          <span class="modal-email">{{ User_Prop.email }}</span>
         </div>
       </div>
     </div>
@@ -53,11 +53,13 @@ export default {
 
   data() {
     return {
-      modal: true
+      modal: true,
+      mask: "###.###.###-##",
+      maskPhone: "(##) #####-#####",
     };
   },
   methods: {
-      closeModal() {
+    closeModal() {
       if (this.modal) {
         this.modal = false
       }
@@ -67,8 +69,8 @@ export default {
 </script>
 <style scoped>
 .information-modal {
-  width: 450px;
-  height: auto;
+  width: 612px;
+  height: 334px; 
   flex-direction: column;
   border-radius: 10px;
   background-color: white;

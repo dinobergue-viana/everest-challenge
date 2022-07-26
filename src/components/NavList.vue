@@ -20,7 +20,7 @@
 
 .text {
     cursor: pointer;
-    margin-left: 517px;
+    margin-left: 39vw;
     margin-top: 15px;
 }
 
