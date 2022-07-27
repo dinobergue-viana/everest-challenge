@@ -19,7 +19,7 @@
         </div>
         <div class="information-content">
           <label>Nascimento</label>
-          <span>{{ User_Prop.birthDate }}</span>
+          <span>{{ User_Prop.birthDate  }}</span>
         </div>
       </div>
 

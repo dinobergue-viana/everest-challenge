@@ -20,7 +20,7 @@
         </div>
         <label>Nome completo</label>
         <br />
-        <input type="text" v-model="form.name" placeholder='Seu nome' class="bigInput" />
+        <input type="text" v-model="form.name" autocomplete="on" placeholder='Seu nome' class="bigInput" />
         <div id="labelEmail">
           <label>E-mail</label>
           <label id="confimEmail">Confirmar o Email</label>
@@ -28,10 +28,10 @@
         <div>
           <div id="email">
 
-            <input v-model="form.email" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
+            <input v-model="form.email" autocomplete="on" placeholder="Seu_Email@email.com" type="text" class="mediumInput" />
+            
 
-
-            <input type="text" v-model="form.confirmEmail" placeholder="confirme seu email"
+            <input type="text" v-model="form.confirmEmail" autocomplete="on" placeholder="confirme seu email"
               class="mediumInput paddingInput" />
 
           </div>
@@ -41,10 +41,10 @@
           <label>Celular</label>
         </div>
         <div id="numbers">
-          <input v-model="form.cpf" v-mask="'###.###.###-##'" maxlength="14" placeholder='000.000.000-00' type="text"
+          <input v-model="form.cpf" v-mask="'###.###.###-##'" autocomplete="on" maxlength="14" placeholder='000.000.000-00' type="text"
             class="mediumInput" />
-          <input v-mask="'(##) #####-#####'" placeholder="(00) 111111-22222" type="text" v-model="form.phone"
-            autocomplete="off" maxlength="15" minlength="14" class="mediumInput paddingInput" />
+          <input v-mask="'(##) #####-#####'" placeholder="(00) 111111-22222"  type="text" v-model="form.phone"
+            autocomplete="on" maxlength="15" minlength="14" class="mediumInput paddingInput" />
         </div>
         <label>Data de nascimento</label>
         <br />
@@ -103,31 +103,28 @@ export default {
   },
 
   methods: {
-     validateCpf() {
-      let firstDigitAfterDash = 0
-      let arrayCpf = Array.from(this.cpf.replaceAll('.', '').replace('-', ''))
 
+    cpfValidate() {
+      let firstDigitAfterDash = 0
+      let arrayCpf = Array.from(this.form.cpf.replaceAll('.', '').replace('-', ''))
       for (let i = 0; i < arrayCpf.length - 2; i++) {
-        firstDigitAfterDash += parseInt(arrayCpf[i]) * (10 - i)
+        firstDigitAfterDash += Number.parseInt(arrayCpf[i]) * (10 - i)
       }
       firstDigitAfterDash = 11 - (firstDigitAfterDash % 11)
       firstDigitAfterDash = firstDigitAfterDash === 10 ? 0 : firstDigitAfterDash
-
-      if (parseInt(arrayCpf[arrayCpf.length - 2]) !== firstDigitAfterDash) {
+      if (Number.parseInt(arrayCpf[arrayCpf.length - 2]) !== firstDigitAfterDash) {
         return false
       }
-
       let secondDigitAfterDash = 0
       for (let i = 0; i < arrayCpf.length - 1; i++) {
-        secondDigitAfterDash += parseInt(arrayCpf[i]) * (11 - i)
+        secondDigitAfterDash += Number.parseInt(arrayCpf[i]) * (11 - i)
       }
       secondDigitAfterDash = 11 - (secondDigitAfterDash % 11)
       secondDigitAfterDash = secondDigitAfterDash === 10 ? 0 : secondDigitAfterDash
-
-      return secondDigitAfterDash === parseInt(arrayCpf[arrayCpf.length - 1])
+      return secondDigitAfterDash === Number.parseInt(arrayCpf[arrayCpf.length - 1])
     },
     async userCreate(form) {
-      if (form.name == "") {
+      if (form.name == "" ) {
         alert("Preencha Seu Nome")
       } else if (form.email == "") {
         alert("Preencha seu Email")
@@ -137,9 +134,9 @@ export default {
         alert("Preencha Seu CPF")
       } else if (form.phone == "") {
         alert("Preencha Seu Telefone")
-      } else if (this.cpfValidate()) {
-        alert("Preencha Sua Data de Nascimento")
-      } else {
+      } else if(form.birthDate == ""){ 
+         alert("Preesncha sua Data de Nascimento")
+      }else if (this.cpfValidate() ) {
         try {
           const newUser = { fullname: form.name, email: form.email, confirmEmail: form.confirmEmail, phone: form.phone, birthDate: form.birthDate, cpf: form.cpf }
           const response = await axios.post("/api/users", newUser)
@@ -148,10 +145,15 @@ export default {
         catch (error) {
           console.log(error);
         }
+
+      } else {
+        alert("CPF INVALIDO")
       }
+
     }
   }
 }
+
 
 </script>
 
