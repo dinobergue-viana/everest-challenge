@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
+import  axios  from 'axios'
 import router from './router'
 import { createServer, Model } from 'miragejs'
-
 import VueMask from 'v-mask';
-Vue.use(VueMask)
+import '@fortawesome/fontawesome-free/css/all.css'
+import JwPagination from 'jw-vue-pagination';
+
+Vue.component('jw-pagination', JwPagination);
+Vue.use(VueMask)    
 
 createServer({
   models: {
@@ -14,6 +18,65 @@ createServer({
     server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
     server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
     server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Amanda Ramos Rocha", cpf: "10667188906", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Bruno Brandl", cpf: "11622643909", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Gabriel Felipe", cpf: "15349781944", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    
+    
   },
   routes() {
     this.namespace = 'api'
